@@ -1,0 +1,106 @@
+SQL
+---
+
+SQL is a Standard Computer Database Language 
+
+
+What Exactly is SQL..?
+
+the Sql is a tool for organizing and retrieving the data stored by a computer database,
+Sql stands for Structured Query language and some people will call it as "Sequel"
+when we want to store something or do something in the server we need to tell that to the server in server understanding format 
+how come we can tell that to the system 
+
+the answer for the above question is by using the SQL 
+
+SQL is a computer language that we can use to interact with the database.
+
+
+SQL is an interactive query language. Users type SQL commands into an interactive 
+SQL program to retrieve data and display it on the screen, providing a convenient, 
+easy-to-use tool for ad hoc database queries. 
+ 
+ 
+SQL is a database programming language. Programmers embed SQL commands into 
+their application programs to access the data in a database. Both user-written 
+programs and database utility programs (such as report writers and data entry tools) 
+use this technique for database access. 
+
+
+
+
+Why it is important..?
+
+
+
+what can it do and how does it works..?
+
+when you need to retrieves data from database we use the Sql language to make the request, the DBMS(Data base management System)
+process the Sql request, retrieves data, and returns to us.
+
+this process of requesting data from database and receiving back the results is called database QUERY -> hence the name called 
+STRUCTURED QUERY LANGUAGE 
+
+
+
+
+
+
+what are the different types of SQL products..?
+SQL server, Oracle, Informix, Sybase, DB2...etc
+
+
+SQL Role
+---------
+
+SQL is not itself a database management system, nor it is a standalone product.
+we can't go into computer store and "Buy the Sql" like other products 
+
+SQL is a internal part of a DBMS, a language and a tool for communicating with the DBMS
+
+
+
+
+SQL Features and Benefits
+-------------------------
+
+Vendor independence
+
+
+SQL standards
+
+
+High-level, English-like structure 
+
+.
+.
+.
+.
+etc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
