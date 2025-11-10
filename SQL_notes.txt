@@ -81,17 +81,131 @@ etc
 
 
 
+Relationships(E-R Diagrams): 
+----------------------------
+
+before star working with any Sql related work the first thing we need to do is creating the basic structure of the database and planning the database
+
+planning the database
+---------------------
+
+planning the database means what is the db name
+how many tables we need to create 
+what are the values we need to store in each table
+what is the relationship between the tables 
+
+
+to do the all above things we will use the E-R Diagrams 
+
+e-r diagrams (ERD)
+
+e- entity 
+r -relationship 
+
+ERD diagrams are used to define the relationship between the entities(tables) and attributes ...etc  
+
+
+Identify the following things
+
+first identify how many entities we need for the project 
+then categorize them based on the requirements
+NOTE: each entity(table) should exactly contain a particular task data(related information)
+define the attributes for each entity(table) and list all the (properties or field) describe the attributes(choose the proper datatype)
+these attributes are nothing but columns of the tables
+identify the relationship between the tables
+
+
+Different Types of relationships
+--------------------------------
+we have three types of relationships only 
+
+one to one
+one to many
+many to one
+many to many
+
+refer to : relationship Examples file
 
 
 
+PK and FK
+---------
+
+primary key
+-----------
+
+primary key is used to identify the each record of the table
+the main purpose of the primary is when we try to fetch the record from the table we will pass the primary key main argument to fetch the record among
+all the available records
+
+each row(record) in a table will contains the primary key
+
+if you mention any field(attribute or property) as a primary key then we can't duplicate that key throughout the table records
+
+we can't generate the primary key manually or we can make Sql to generate the PK automatically 
+
+when say automatically we will use auto-increment in Sql
+
+
+Foreign Key
+-----------
+
+foreign key is used to identify the other tables record inside the current table 
+example
+in student table we have a field called fee_contribution_id which we marked as foreign key then the same field 
+the the student_fee_contribution table will act like a primary key
+
+here in the student table we use fee_contribution_id to identify the other table(student_fee_contribution) table records 
+
+the main purpose of the foreign key is to simplify the tables structures 
+in simple terms we call this a normalization process( deviding the big table into multiple tables and creating the relationship between them using FK)
+
+ 
+
+select any of your favorite website or application and start the db_Design part 
+
+this project has to be uploaded in lms  
+
+
+Crow’s Foot Notation :
+	https://www.red-gate.com/blog/crow-s-foot-notation
+
+Chen ERD notation :
+	red-gate.com/blog/chen-erd-notation	
 
 
 
+-- create database CMIS;
+
+-- CREATE DATABASE cmis; 
+-- use cmis;
+
+
+-- CREATE TABLE User_login (user_id varchar(10) not null primary key, password varchar(25));
+
+-- insert into user_login(user_id,password) values("ANP-3634", "12345"),("ANP-3754","123452@Pa");
+-- insert into user_login(password, user_id) values("123", "ANP-1234");
+-- insert into user_login(user_id, password) values("123", "ANP-1234");
+
+-- insert into user_login values("anp-123","1234"); 
+
+-- delete from user_login where user_id = "123";
+
+-- delete from cmis.user_login;
+
+-- drop table cmis.user_login;
+
+SELECT * FROM cmis.user_login;
 
 
 
+-- CRUD
+-- CREATE
+-- READ
+-- UPDATE
+-- DELETE
 
-
+-- CTRL + / for commenting 
 
 
 
