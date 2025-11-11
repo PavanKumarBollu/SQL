@@ -9,7 +9,7 @@
  
   -- SELECT min(Population) from world.city 
   
-  -- insert into world.city (id, Name, CountryCode, District, Population) values (10000, "INDIA","IND","HYD",1000000)
+  -- insert into world.city (id, Name, Count-- ryCode, District, Population) values (10000, "INDIA","IND","HYD",1000000)
   
   -- DELETE FROM world.city where id = 1000
   
