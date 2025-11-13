@@ -4,20 +4,10 @@ use cmis;
 
 
 CREATE TABLE User_login (user_id varchar(10) not null primary key, password varchar(25));
+insert into user_login(user_id,password) values("ANP-3634", "12345");
 
--- insert into user_login(user_id,password) values("ANP-3634", "12345"),("ANP-3754","123452@Pa");
--- insert into user_login(password, user_id) values("123", "ANP-1234");
--- insert into user_login(user_id, password) values("123", "ANP-1234");
+ALTER TABLE user_login ADD FOREIGN KEY (user_id) REFERENCES users(user_id);
 
--- insert into user_login values("anp-123","1234"); 
-
--- delete from user_login where user_id = "123";
-
--- delete from cmis.user_login;
-
--- drop table cmis.user_login;
-
-SELECT * FROM cmis.user_login;
 
 CREATE TABLE users(
 user_id varchar(10) primary key, 
@@ -74,7 +64,6 @@ course_id varchar(15) not null
 
 );
 
-
 INSERT INTO students
 (student_id, std_name, 
 std_phone, phone_status, 
@@ -100,9 +89,11 @@ course_id
 "ANP-D1439"
 );
 
-
-
-
+ALTER TABLE students ADD FOREIGN KEY (std_education_id) REFERENCES student_edu_details(std_education_id);
+ALTER TABLE students ADD FOREIGN KEY (fee_cont_id) REFERENCES student_fee_contribution(fee_cont_id);
+ALTER TABLE students ADD FOREIGN KEY (course_id) REFERENCES courses(course_id);
+ALTER TABLE students ADD FOREIGN KEY (reffered_by) REFERENCES users(user_id);
+ALTER TABLE students ADD FOREIGN KEY (created_by) REFERENCES users(user_id);
 
 CREATE TABLE student_edu_details(
 std_education_id varchar(15) primary key,
@@ -121,13 +112,23 @@ institution_name, specilization,
 pass_year)values("E001","AF04969243",
 "B-Tech",7.5,"Kakinada_institution_of_eng_and_tech","AI_DS",'2025');
 
+ALTER TABLE student_edu_details ADD FOREIGN KEY (student_id) REFERENCES students(student_id);
+
 
 CREATE TABLE student_fee_contribution(
 fee_cont_id varchar(15) primary key,
-fee_id varchar(50),
 student_id varchar(11) not null,
 amount_paid float not null
 );
+
+INSERT INTO student_fee_contribution(
+fee_cont_id,student_id,amount_paid
+) values(
+"N201287004764",
+"AF04969243",
+2000.00
+);
+
 
 
 
@@ -135,7 +136,7 @@ CREATE TABLE courses (
 course_id varchar(15) primary key,
 course_code varchar(30) not null,
 course_model varchar(15) not null,
-duration varchar(20) not null,
+duration int not null,
 ilt_hours int not null,
 self_learning_hours int not null,
 toc varchar(200),
@@ -145,44 +146,67 @@ class_pattern varchar(50),
 course_outcome varchar(200) 
 );
 
+INSERT INTO courses (
+course_id,course_code,
+course_model,duration,
+ilt_hours,self_learning_hours,
+toc,course_status,
+tech_stack,class_pattern,
+course_outcome
+) values (
+"DANLC","Data Analytics (No + Low Code)",
+"Center", 320,
+272,48,
+"Data visualization - Excel & Power BI, Python, SQL, MySQL,Soft Skill,Tech orientation ,GenAI","Active",
+"Data visualization - Excel & Power BI, Python, SQL, MySQL,Soft Skill,Tech orientation ,GenAI","2 hours domain 1 hour Softskills",
+"Data Analyst MIS Executive Jr. Python Developer"
+);
+
+
 
 CREATE TABLE batches (
-batch_id varchar(10) primary key,
-batch_code varchar(10),
+batch_code varchar(10) primary key,
+batch_id varchar(10),
 batch_size int not null,
 batch_trainer_map_id varchar(20) not null,
 batch_start_date date not null,
 batch_end_date date not null,
 batch_status varchar(15) ,
 course_id varchar(15) 
-
-
 );
 
+INSERT INTO batches(
+batch_code,batch_id,
+batch_size,batch_trainer_map_id,
+batch_start_date,batch_end_date,
+batch_status,course_id
+) values (
+"ANP-D1439","DANLC",
+40,"DANLC3634",
+'2025-07-29','2026-01-27',
+"Running","DANLC"
+);
+
+ALTER TABLE batches ADD FOREIGN KEY (course_id) REFERENCES courses(course_id);
 
 CREATE TABLE batch_trainer_map (
 
 batch_trainer_map_id varchar(20) primary key,
-batch_id varchar(10) not null,
+batch_code varchar(10) not null,
 trainer_id varchar(10) not null,
 trainer_roll_in_batch varchar(150) not null
 );
+INSERT INTO batch_trainer_map(
+batch_trainer_map_id,batch_code,
+trainer_id,trainer_roll_in_batch
+) values (
+"DANLC3634","ANP-D1439",
+"ANP-3634","Domain Trainer"
+);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ALTER TABLE BATCH_TRAINER_MAP RENAME column BATCH_CODE TO  batch_code;
+ALTER TABLE batch_trainer_map ADD FOREIGN KEY (batch_code) REFERENCES batches(batch_code);
+ALTER TABLE batch_trainer_map ADD FOREIGN KEY (trainer_id) REFERENCES users(user_id);
 
 
 
@@ -194,3 +218,16 @@ trainer_roll_in_batch varchar(150) not null
 -- DELETE
 
 -- CTRL + / for commenting 
+
+
+
+-- insert into user_login(password, user_id) values("123", "ANP-1234");
+-- insert into user_login(user_id, password) values("123", "ANP-1234");
+
+-- insert into user_login values("anp-123","1234"); 
+
+-- delete from user_login where user_id = "123";
+
+-- delete from cmis.user_login;
+
+-- drop table cmis.user_login;
