@@ -213,9 +213,9 @@ ALTER TABLE batch_trainer_map ADD FOREIGN KEY (trainer_id) REFERENCES users(user
 
 -- CRUD
 -- CREATE
--- READ
--- UPDATE
--- DELETE
+-- READ(Select)
+-- UPDATE (ALTER)
+-- DELETE (DROP)
 
 -- CTRL + / for commenting 
 
