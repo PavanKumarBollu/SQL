@@ -1,4 +1,3 @@
-
 CREATE DATABASE cmis; 
 use cmis;
 
@@ -50,7 +49,7 @@ gender char not null,
 father_name varchar(30) not null,
 address varchar (200) not null,
 center_code varchar(50) not null,
-reffered_by varchar(10) not null,
+reffered_by varchar(10) ,
 disability_status varchar (20),
 disability_details varchar(100),
 id_proof_type varchar(50) not null,
@@ -81,23 +80,23 @@ course_id
 "kattachadrasekhar613@gamil.com",'2003-08-05',
 'M',"balaraju",
 "kakinada--andraprasesh","ACC-Madhapur",
-"ANP-1234","NA",
+"ANP-3634","NA",
 "NA","aadhar",
 "1234 3214 7894 4569",10211658,
 "","E001",
-"ANP-1234","N201287004764",
-"ANP-D1439"
+"ANP-3634","N201287004764",
+"DANLC"
 );
 
 ALTER TABLE students ADD FOREIGN KEY (std_education_id) REFERENCES student_edu_details(std_education_id);
 ALTER TABLE students ADD FOREIGN KEY (fee_cont_id) REFERENCES student_fee_contribution(fee_cont_id);
+
 ALTER TABLE students ADD FOREIGN KEY (course_id) REFERENCES courses(course_id);
 ALTER TABLE students ADD FOREIGN KEY (reffered_by) REFERENCES users(user_id);
 ALTER TABLE students ADD FOREIGN KEY (created_by) REFERENCES users(user_id);
 
 CREATE TABLE student_edu_details(
 std_education_id varchar(15) primary key,
-student_id varchar(11) not null,
 highest_qualification varchar(50) not null,
 marks float not null,
 institution_name varchar(100) not null,
@@ -106,13 +105,14 @@ pass_year year
 );
 
 INSERT INTO student_edu_details
-(std_education_id, student_id, 
+(std_education_id,
 highest_qualification, marks, 
 institution_name, specilization, 
-pass_year)values("E001","AF04969243",
+pass_year)values("E001",
 "B-Tech",7.5,"Kakinada_institution_of_eng_and_tech","AI_DS",'2025');
 
-ALTER TABLE student_edu_details ADD FOREIGN KEY (student_id) REFERENCES students(student_id);
+-- don't use the following FK it will create the circuler deadlock
+-- ALTER TABLE student_edu_details ADD FOREIGN KEY (student_id) REFERENCES students(student_id);
 
 
 CREATE TABLE student_fee_contribution(

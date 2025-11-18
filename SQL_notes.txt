@@ -405,7 +405,24 @@ trainer_roll_in_batch varchar(150) not null
 -- CTRL + / for commenting 
 
 
+JOINS
+-----
 
+Joins are used to combine the data from multiple tables data
+
+different ways of writing the joins
+
+	INNER JOIN
+	LEFT JOIN
+	RIGHT JOIN
+	FULL OUTER JOIN -- full outer join support is not available in Sql( we use the combination of left and right join to full fill this requirement)
+				it is available in psSQL and Sql server, oracle
+	SELF JOIN
+	CROSS JOIN
+
+INNER JOIN
+----------
+matching rows(records) from two or more tables it returns only the rows where there is a match in both tables based on the given condition
 
 
 
